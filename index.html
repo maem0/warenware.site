@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="bar">
+      <div class="text">//waren</div>
+      <div class="links">
+        <a href="https://github.com/warenwakolj">Github</a> //
+        <a href="https://osu.ppy.sh/users/wrn81056">osu!</a> //
+        <a href="warendows/index.html">Warendows</a>
+      </div>
+    </div>
+
+    <div class="rectangle" style="overflow: hidden;">
+      <div class="profile">
+        <img src="img/pfp.png" alt="Profile image">
+        <div class="profile-info">
+          <ul class="info-list">
+            <li class="info-item"><span class="label">Age:</span> 17</li>
+            <li class="info-item"><span class="label">Location:</span> Vienne, France</li>
+            <li class="info-item"><span class="label">Languages:</span> Malaysian, English, French, German, Russian, Chinese (a bit)</li>
+            <li class="info-item"><span class="label">Coding Languages:</span> JS, C#, Python, C++, Assembly</li>
+            <li class="info-item"><span class="label">Interests:</span> Coding, Bike, Tech, Games, Music, Writing, Drawing, Reading</li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <h1>About me</h1>
+        Hello! I'm Waren, I live in France and I love coding, playing games, biking and real life exploration
+        <br>
+        (I know, I'm very basic lol) 
+        <br>
+        <br>
+        A few of my projects are: osu!web classic, HBMP2, wakoljpychat and Warendows and some more unreleased that are still WIP
+        
+        <h2>Check out <a href="warendows/index.html">Warendows</a>, it's an expanded version of my portfolio in a windows style, I worked hard on it</h2>
+
+        If you want to contact me, do it through <s>Twitter</s>, <a href="mailto:slimestwin@gmail.com">E-Mail</a> <s>or Discord (@w81056398).</s>
+          <br>
+          <br>
+I like reading and writing, mostly fanfics for writing, but also history and romance, 
+and police/detective story books in reading.
+<br>
+<br>
+You can go <a href="blog/index.html">here</a> to check my blog
+and <a href="setup/index.html">here</a> for my setup
+<br>
+<br>
+          Here are some games I'm into:
+<br>
+            - Danmaku style games: Touhou, Mushihimesama Futari
+            <br>
+            - Rhythm games: Jubeat, DJMAX, Chuni, Pump It Up... osu!.......
+            <br>
+            - RPG Maker style games: Ao Oni, Wadanohara, Zeno Remake, witch's Heart, hello charlotte
+            <br>
+            - Shooter games: Call of Duty BO2, MW3, Cs2, CS:Source
+            <br>
+            - Simulation games: Euro Truck Simulator, Cities Skylines, Asseto Corsa
+            <br>
+            <s>- Gacha games: Honkai Star Rail, Blue Archive, WUWA, Touhou Lost world</s> let me forget
+            <br>
+            <br>
+            and of course, Pokémon
+            <br>
+            <br>
+      </div>
+    </div>
+
+    <div class="blognpcontainer">
+      <div class="blnpREKT" id="songDiv1" data-index="0">
+        <div class="album" id="albumArt1"></div>
+        <div class="nowplaying">Now playing</div>
+        <div class="songname" id="songName1">Lolz</div>
+        <div class="artist" id="artistName1">Lazytofixitrn</div>
+        <button class="playPauseButton" id="playPauseButton1"></button>
+      </div>
+      <div class="blnpREKT">
+        <div style="margin: 20px 10px;">
+          <img src="img/WRNINSIDE.png" height="60px">
+        </div>
+      </div>
+    </div>
+
+    <div id="expandedPlayer" class="sidebar hidden">
+      <div class="sidebar-content">
+        <div class="album-large" id="albumArtLarge"></div>
+        <div class="song-info">
+          <div class="songname-large" id="songNameLarge">Lolz</div>
+          <div class="artist-large" id="artistNameLarge">Lazytofixitrn</div>
+        </div>
+        <div class="controls">
+          <button id="prevButton"></button>
+          <button id="playPauseButtonLarge"></button>
+          <button id="nextButton"></button>
+        </div>
+        <input type="range" id="seekBar" value="0" max="100">
+        <div class="close-button" id="closeButton"></div>
+      </div>
+    </div>
+
+    <div class="bottomthing">
+      <div class="left" style="color:#383838">Last update: 04/07/24</div>
+      Thank you for being here!
+    </div>
+  </div>
+
+  <script src="music.js"></script>
+</body>
+</html>
