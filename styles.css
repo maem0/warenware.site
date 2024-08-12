@@ -1,0 +1,237 @@
+body, h1, p, ul, li, a {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    user-select: none;    
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0e0e0e;
+    text-align: center;
+    background-image: url('img/background.jpg');
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+img {
+    -webkit-user-drag: none; 
+    user-drag: none;     
+    pointer-events: none;    
+}
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 40px 5px 20px;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgb(14, 14, 14) 100%); 
+        border-bottom: 1px solid rgb(34, 34, 34);
+        position: relative; 
+        z-index: 1;
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.39);
+
+    }
+
+        header .logo img {
+            max-height: 67px;
+            position: relative; 
+            margin-bottom:-10px;
+
+        }
+
+        header nav ul {
+            display: flex;
+            gap: 22px;
+            position: relative; 
+        }
+        
+        header nav ul li {
+            position: relative;
+            padding-top: 20px;  
+            padding-bottom: 20px;
+        }
+        
+        header nav ul li a {
+            color: white;
+            transition: color 0.5s ease;
+            font-size: 18px;
+            display: block; 
+        }
+        
+        header nav ul li .dropdown-menu {
+            display: none; 
+            position: absolute;
+            top: 47px;
+        right: -15px;
+            background: rgb(0, 0, 0); 
+            border: 1px solid rgb(34, 34, 34);
+            padding: 0;
+            margin: 0;
+            z-index: 2;
+        }
+        
+        header nav ul li .dropdown-menu li {
+            padding: 0px;
+        }
+        
+        header nav ul li .dropdown-menu li a {
+            color: white;
+            display: block; 
+            padding: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        header nav ul li .dropdown-menu li a:hover {
+            background: rgb(34, 34, 34); 
+        }
+        
+        header nav ul li:hover .dropdown-menu {
+            display: block;
+        }
+        
+        header nav ul li:nth-child(1) a:hover {
+            color: rgb(254, 51, 153);
+        }
+        
+        header nav ul li:nth-child(2) a:hover {
+            color: rgb(78, 189, 255);
+        }
+        
+        header nav ul li:nth-child(3) a:hover {
+            color: rgb(255, 229, 0);
+        }
+        
+
+
+main {
+    color: white;
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+    text-align: center; 
+    
+}
+
+main h1 {
+    font-size: 98px;
+    font-weight: light;
+}
+
+main .tagline {
+    font-size: 18px;
+    color: #cfcfcf;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+main .socials {
+    font-size: 20px;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.39);
+}
+
+main .socials a {
+    color: white;
+    margin: 0 5px;
+    transition: color 0.3s ease; 
+
+}
+
+main .socials span {
+    color: white;
+    font-size: 14px;
+}
+
+main .socials a:nth-child(1):hover {
+    color: #6c00c5;
+}
+
+main .socials a:nth-child(3):hover {
+    color: #1DA1F2;
+}
+
+main .socials a:nth-child(5):hover {
+    color: #FF66AA; 
+}
+
+main .socials a:nth-child(7):hover {
+    color: #b30000; 
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    background-color:#00000099;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 40px solid white;
+    position: absolute;
+    bottom: 0;
+    z-index: 0;
+}
+
+footer {
+    color: rgb(101, 101, 101); 
+    text-align: center; 
+    padding: 10px 0; 
+    margin-top: auto; 
+    width: 100%; 
+}
+
+/*     "<div class="stripe pink"></div>
+    <div class="stripe blue"></div>
+    <div class="stripe yellow"></div>"
+.stripe {
+
+    height: 100vh;
+    position: absolute;
+    width: 60px;
+}   
+
+.pink {
+    background-color: #ff0080;
+    right: 190px;
+
+}
+
+.blue {
+    background-color: #00bfff;
+    right: 115px;
+
+}
+
+.yellow {
+    background-color: #ffff00;
+
+    right: 40px;
+}
+
+
+.container {
+    position: relative;
+    width: 100%;  
+    height: 500px;
+}
