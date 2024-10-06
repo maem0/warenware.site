@@ -3,46 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>81056398</title>
+    <title>Home</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <header>
-        <div class="logo">
-            <img src="img/wrn@2x.png">
+  
+    <div class="panel-container">
+        <div class="maininf">
+            <div class="welcome-text">81056398</div>
+            <div class="clock" id="clock"></div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Main</a></li>
-                <li><a href="about/index.html">About</a></li>
-                <li><a href="projects/index.html">Projects</a></li>             
-            </ul>
-        </nav>
-    </header>
+    
+        <div class="panel" data-info="Panel 1">
+            <div class="panel-content">
+                <h2>Hello!</h2>
+            </div>
+            <div class="extra-content" id="extra-content-1">
+                <img src="https://files.catbox.moe/ettup2.png" style="width:100%; ;">
+                <p>Welcome to my page, this is the 10th redesign of my personal page i'm pretty sure....  xD</p>
 
-     <div class="container"></div> 
-
-    <main>
- <h1>81056398</h1>
-          
-          
-        <p class="tagline">I pray games. Sankuyuuuuuuuu ~ (●´∀｀●)ノ</p>
-        <div class="socials">
-            <a href="https://github.com/warenwakolj">Github</a>
-            <span>●</span>
-            <a href="https://twitter.com/w81056398">Twitter</a>
-            <span>●</span>
-            <a href="https://osu.ppy.sh/users/14498926">osu!</a>
-            <span>●</span>
-            <a href="https://www.youtube.com/@warenwakolj">Youtube</a>
+                <p>Click or scroll through the panels to see stuff.. i guess</p>
+                <br> 
+                <p>I should really start working on my actual projects</p>
+            </div>
         </div>
-    </main>
-    <footer>
-        Terminally online since 2014
-    </footer>
+    
+        <div class="panel" data-info="Panel 2">
+            <div class="panel-content">
+                <h2>About me</h2>
+            </div>
+            <div class="extra-content" id="extra-content-2">
+                <p>Hello! I don't even know who i am anymore<br>Anyways, but seriously, I'm 17, I like to code things, play things, listen to music and explore stuff. <br><br> I know C#, Python and JS, and I like to make designs in frontend.<br> I'm currently learning Chinese and Russian (for the lolz)  <br><br> If you wanna chat with me add me on discord (I possibly won't respond quickly) @w81056398</p>
+            </div>
+        </div>
+    
+        <div class="panel" data-info="Panel 3">
+            <div class="panel-content">
+                <h2>Socials</h2>
+            </div>
+            <div class="extra-content" id="extra-content-3">
+                <div class="container">
+                    <a href="https://twitter.com/w81056398" class="button twitter" target="_blank">
+                        <img src="icons/twitter.png" alt="Twitter" class="icon"> w81056398
+                        <span class="name">Twitter</span>
+                    </a>
+                    <a href="https://www.youtube.com/@warenwakolj" class="button youtube" target="_blank">
+                        <img src="icons/youtube.png" alt="YouTube" class="icon"> warenwakolj
+                        <span class="name">YouTube</span>
+                    </a>
+                    <a href="https://github.com/warenwakolj" class="button github" target="_blank">
+                        <img src="icons/github.png" alt="GitHub" class="icon"> warenwakolj
+                        <span class="name">GitHub</span>
+                    </a>
+                    <a href="https://osu.ppy.sh/users/14498926" class="button osu" target="_blank">
+                        <img src="icons/osu.png" alt="osu!" class="icon"> wrn81056398
+                        <span class="name">osu!</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="panel" data-info="Panel 4">
+            <div class="panel-content">
+                <h2>Projects</h2>
+            </div>
+            <div class="extra-content" id="extra-content-4">
+                <div class="container">
+                    <a href="https://github.com/warenwakolj/OpenStartScreen" class="button oss" target="_blank">
+                       OpenStartScreen
+                        <span class="name">Afk</span>
+                    </a>
+                    <a href="https://github.com/warenwakolj/streamix" class="button streamix" target="_blank">
+              Streamix
+                        <span class="name">WIP... or not</span>
+                    </a>
+                    <a href="https://warenwakolj.github.io/warendows/index.html" class="button warendows" target="_blank">
+          warendows
+                        <span class="name">somewhat finished</span>
+                    </a>
+                    <a href="about:blank" class="button Rettorna" target="_blank">
+                        Rettorna
+                        <span class="name">SoonTM </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="panel" data-info="Panel 5">
+            <div class="panel-content">
+                <h2>Media Player</h2>
+            </div>
+            <div class="extra-content" id="extra-content-5">
+                <div class="musicard">
+                    <div class="album-art">
+                        <img src="img/album.jpg" alt="Album Art">
+                    </div>
+                    <div class="song-details">
+                        <div class="song-info">
+                            <h2>Who are you? <br> (Aquasky Remix)</h2>
+                            <p>Omni Trio</p>
+                        </div>
+                        <div class="controls">
+                            <button id="prev" class="control-btn">
+                                <img src="img/prev.svg" alt="Previous" class="control-icon">
+                            </button>
+                            <button id="play-pause" class="control-btn">
+                                <img src="img/play.svg" alt="Play" class="control-icon" id="play-icon">
+                                <img src="img/pause.svg" alt="Pause" class="control-icon hidden" id="pause-icon">
+                            </button>
+                            <button id="next" class="control-btn">
+                                <img src="img/next.svg" alt="Next" class="control-icon">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <input type="range" id="progress-bar" value="0" min="0" max="100" step="1">
+
+            </div>
+        </div>
+        
+        <div class="panel" data-info="Panel 6">
+            <div class="panel-content">
+                <h2>Things I like</h2>
+            </div>
+            <div class="extra-content" id="extra-content-6">
+                <p>My waif<br> <br> <br> <br> <br><br> <br> <br> but actually that is wrong.. i dont like my waif, i love my waif</p>
+
+            </div>
+        </div>
+    </div>
+    <audio id="audio" src="data/audio.mp3"></audio>
+
+    <script src="music.js"></script>
+
+    <script src="script.js"></script>
 </body>
-
-<script src="triangle.js"></script>
-
 </html>
