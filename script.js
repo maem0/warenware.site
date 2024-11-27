@@ -1,97 +1,151 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const panels = document.querySelectorAll('.panel');
-    let selectedIndex = 0;
-    let isTransitioning = false;
-    let scrollTimeout = null;
+const scrollContainer = document.querySelector('.scroll-container');
 
-    function updatePanels() {
-        isTransitioning = true;
-        panels.forEach((panel, index) => {
-            const extraContent = panel.querySelector('.extra-content');
-            if (index === selectedIndex) {
-                panel.classList.add('selected');
-                panel.classList.remove('unselected');
-                extraContent.style.display = 'block'; 
-            } else {
-                panel.classList.remove('selected');
-                panel.classList.add('unselected');
-                extraContent.style.display = 'none'; 
-            }
-        });
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 300);
-    }
-    
-    function selectPanel(index) {
-        if (isTransitioning) return; 
-        selectedIndex = (index + panels.length) % panels.length; 
-        updatePanels();
-    }
+function updateBackgroundPosition(scrollPosition) {
+   const isMobile = window.innerWidth <= 768;
+   if (isMobile) {
+      document.body.style.backgroundPosition = `${-scrollPosition * 0.12 - 500}px center`;
+   } else {
+      document.body.style.backgroundPosition = `${-scrollPosition * 0.2}px center`;
+   }
+}
 
-    updatePanels();
+scrollContainer.addEventListener('wheel', function (event) {
+   if (event.deltaY !== 0) {
+      scrollContainer.scrollLeft += event.deltaY;
+      event.preventDefault();
+   }
+});
 
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'ArrowUp') {
-            selectPanel(selectedIndex - 1);
-        } else if (event.key === 'ArrowDown') {
-            selectPanel(selectedIndex + 1);
-        }
-    });
+scrollContainer.addEventListener('scroll', function () {
+   const scrollPosition = scrollContainer.scrollLeft;
+   updateBackgroundPosition(scrollPosition);
+});
 
-    document.addEventListener('wheel', (event) => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            if (event.deltaY < 0) {
-                selectPanel(selectedIndex - 1);
-            } else {
-                selectPanel(selectedIndex + 1);
-            }
-        }, 100); 
-    });
-
-    panels.forEach((panel, index) => {
-        panel.addEventListener('click', () => {
-            selectPanel(index);
-        });
-    });
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    document.addEventListener('touchstart', (event) => {
-        touchStartX = event.changedTouches[0].screenX;
-    });
-
-    document.addEventListener('touchend', (event) => {
-        touchEndX = event.changedTouches[0].screenX;
-        handleSwipeGesture();
-    });
-
-    function handleSwipeGesture() {
-        const swipeThreshold = 50;
-        if (touchEndX < touchStartX - swipeThreshold) {
-            selectPanel(selectedIndex + 1);
-        } else if (touchEndX > touchStartX + swipeThreshold) {
-            selectPanel(selectedIndex - 1);
-        }
-    }
+window.addEventListener('resize', function () {
+   const scrollPosition = scrollContainer.scrollLeft;
+   updateBackgroundPosition(scrollPosition);
 });
 
 
-function updateClock() {
-    const clockElement = document.getElementById('clock');
-    const now = new Date();
+let isScrolling = false;
+let targetScrollLeft = 0;
+let currentScrollLeft = scrollContainer.scrollLeft;
 
-    const gmtPlusTwo = new Date(now.getTime() + (2 * 60 * 60 * 1000));
+scrollContainer.addEventListener('wheel', function (event) {
+   targetScrollLeft = scrollContainer.scrollLeft + event.deltaY * 2;
 
-    const hours = String(gmtPlusTwo.getUTCHours()).padStart(2, '0');
-    const minutes = String(gmtPlusTwo.getUTCMinutes()).padStart(2, '0');
+   event.preventDefault();
 
-    const timeString = `${hours}:${minutes}`;
+   if (!isScrolling) {
+      isScrolling = true;
 
-    clockElement.textContent = timeString;
+      smoothScroll();
+   }
+});
+
+function smoothScroll() {
+   const scrollSpeed = 80;
+   const distanceToScroll = targetScrollLeft - currentScrollLeft;
+
+   if (Math.abs(distanceToScroll) < 1) {
+      isScrolling = false;
+      return;
+   }
+
+   currentScrollLeft += distanceToScroll * 0.1;
+
+   scrollContainer.scrollLeft = currentScrollLeft;
+
+   requestAnimationFrame(smoothScroll);
 }
 
-setInterval(updateClock, 1000); 
-updateClock(); 
+function updateTime() {
+   const timeElement = document.getElementById('time');
+   const now = new Date();
+
+   const gmtPlusTwo = new Date(now.getTime() + (2 * 60 * 60 * 1000));
+
+   const hours = String(gmtPlusTwo.getUTCHours()).padStart(2, '0');
+   const minutes = String(gmtPlusTwo.getUTCMinutes()).padStart(2, '0');
+
+   const timeString = `${hours}:${minutes}`;
+
+   const day = gmtPlusTwo.getDate();
+   const month = gmtPlusTwo.toLocaleString('default', {
+      month: 'long'
+   });
+   const year = gmtPlusTwo.getFullYear();
+   const dateString = `${day} ${month} ${year}`;
+
+   document.querySelector('.time-info p:last-child').textContent = dateString;
+   timeElement.textContent = timeString;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+
+function updateClock() {
+   const now = new Date();
+
+   const utcOffsetInHours = 1;
+   const utcTime = new Date(now.getTime() + utcOffsetInHours * 60 * 60 * 1000);
+
+   const seconds = utcTime.getUTCSeconds();
+   const minutes = utcTime.getUTCMinutes();
+   const hours = utcTime.getUTCHours();
+
+   const secondAngle = seconds * 6;
+   const minuteAngle = (minutes + seconds / 60) * 6;
+   const hourAngle = (hours % 12 + minutes / 60) * 30;
+
+   const hourHand = document.querySelector('.hour-hand');
+   const minuteHand = document.querySelector('.minute-hand');
+   const secondHand = document.querySelector('.second-hand');
+
+   hourHand.setAttribute('transform', `rotate(${hourAngle} 50 50)`);
+   minuteHand.setAttribute('transform', `rotate(${minuteAngle} 50 50)`);
+   secondHand.setAttribute('transform', `rotate(${secondAngle} 50 50)`);
+}
+
+setInterval(updateClock, 1000);
+updateClock();
+
+document.addEventListener('DOMContentLoaded', () => {
+   const elements = document.querySelectorAll('.social, .project');
+
+   elements.forEach(el => {
+
+      el.addEventListener('mousemove', (e) => {
+         const rect = el.getBoundingClientRect();
+         const mouseX = e.clientX - rect.left;
+         const mouseY = e.clientY - rect.top;
+
+         const centerX = rect.width / 2;
+         const centerY = rect.height / 2;
+
+         const rotateX = -((mouseY - centerY) / centerY) * 5;
+         const rotateY = ((mouseX - centerX) / centerX) * 5;
+
+         el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      el.addEventListener('mouseleave', () => {
+         el.style.transition = 'transform 0.3s ease-out';
+         el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+
+         setTimeout(() => {
+            el.style.transition = '';
+         }, 300);
+      });
+
+      el.addEventListener('mousedown', () => {
+         el.style.transform = 'scale(0.98) rotateX(3deg) rotateY(3deg)';
+         el.style.transition = 'transform 0.1s ease';
+      });
+
+      el.addEventListener('mouseup', () => {
+         el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+         el.style.transition = 'transform 0.2s ease';
+      });
+   });
+});

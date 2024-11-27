@@ -1,0 +1,114 @@
+<head>
+    <style>
+       body {
+       display: flex;
+       user-select: none;
+       height: 100vh;
+       margin: 0;
+       border: 1px solid #1d1d1d;
+       overflow: hidden;
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       }
+       .tile {
+       width: 100%;
+       height: 100%;
+       overflow: hidden;
+       position: relative;
+       background: rgb(51,51,51);
+       background: linear-gradient(90deg, rgba(51,51,51,1) 0%, rgba(45,45,45,1) 100%); 
+       color: #fff;
+       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+       }
+       .tile-content {
+       position: absolute;
+       width: 100%;
+       height: 100%;
+       transition: transform 1s ease-in-out;
+       }
+       .tile img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       }
+       .text {
+       display: flex;
+       align-items: flex-end;
+       justify-content: flex-start; 
+       height: 100%;
+       font-size: 1.2em;
+       font-weight: 100;
+       color: #fff;
+       }
+       p {
+       margin: 7px 20px;
+       z-index: 99;
+       }
+    </style>
+ </head>
+ <body>
+    <div class="tile">
+       <div class="tile-content" id="tile1">
+          <img src="img/PXL_20241028_050705731.jpg" alt="Placeholder Image">
+       </div>
+       <div class="tile-content" id="tile2" style="transform: translateY(100%);">
+          <div class="text">
+             <p>Hi, Testing stuff!</p>
+          </div>
+       </div>
+       <div class="tile-content" id="tile3" style="transform: translateY(100%);">
+          <img src="img/PXL_20241105_064819688.jpg" alt="Placeholder Image">
+       </div>
+       <div class="tile-content" id="tile4" style="transform: translateY(100%);">
+          <div class="text">
+             <p>Woah... live tile</p>
+          </div>
+       </div>
+       <div class="tile-content" id="tile5" style="transform: translateY(100%);">
+          <img src="img/PXL_20241107_150129863.jpg" alt="Placeholder Image">
+       </div>
+       <div class="tile-content" id="tile6" style="transform: translateY(100%);">
+          <div class="text">
+             <p>The next one is the best one!</p>
+          </div>
+       </div>
+       <div class="tile-content" id="tile7" style="transform: translateY(100%);">
+          <img src="img/PXL_20241111_111809056.jpg" alt="Placeholder Image">
+       </div>
+       <div class="tile-content" id="tile8" style="transform: translateY(100%);">
+          <div class="text">
+             <p>Why are you still here</p>
+          </div>
+       </div>
+       <div class="tile-content" id="tile9" style="transform: translateY(100%);">
+          <img src="img/PXL_20241119_065320578.jpg" alt="Placeholder Image">
+       </div>
+       <div class="tile-content" id="tile10" style="transform: translateY(100%);">
+          <div class="text">
+             <p>This is the last one... o/</p>
+          </div>
+       </div>
+    </div>
+    <script>
+       const slides = document.querySelectorAll('.tile-content');
+       let currentIndex = 0;
+       
+       setInterval(() => {
+           slides[currentIndex].style.transition = "transform 1s ease-in-out";
+           slides[currentIndex].style.transform = "translateY(-100%)";
+       
+           const nextIndex = (currentIndex + 1) % slides.length;
+       
+           slides[nextIndex].style.transition = "none"; 
+           slides[nextIndex].style.transform = "translateY(100%)";
+       
+           setTimeout(() => {
+               slides[nextIndex].style.transition = "transform 1s ease-in-out";
+               slides[nextIndex].style.transform = "translateY(0)";
+           }, 10); 
+       
+       
+           currentIndex = nextIndex;
+       }, 5000); 
+    </script>
+ </body>
+ 

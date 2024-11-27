@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden; 
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #000;
+      color: #333; 
+    }
+
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 15vh; 
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0 5vw; 
+      border-bottom: 4px solid #f9b324;
+      z-index: 1000;
+    }
+
+    .top-bar .title {
+      font-size: 4.5vw;
+      font-weight: 100;
+      color: #f9b324;
+      margin-bottom: 5px;
+    }
+
+    .top-bar .rightcontainer {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 5px;
+    }
+
+    .top-bar .time {
+      font-size: 2vw; 
+      color: #b9b9b9; 
+      display: flex;
+      align-items: center;
+    }
+
+    .scroll-container {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+      height: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 25vh 100px;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+      height: 8px; 
+    }
+
+    .scroll-container::-webkit-scrollbar-thumb {
+      background-color: #ccc; 
+      border-radius: 10px;
+    }
+
+    .scroll-container::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    .card {
+  flex: 0 0 auto;
+  width: 35vh;
+  height: auto; 
+  margin: 0 60px;
+
+  color: #ffffff; 
+  display: block; 
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 100;
+  opacity: 0;
+  transform: translateX(100px);
+  animation: card-appear 0.5s ease-in-out forwards;
+}
+
+.projectcard {
+  width: 22vh;
+}
+.mediacard {
+  width: 30vh;
+}
+
+    .card:hover {}
+
+    @keyframes card-appear {
+      0% {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      50% {
+        opacity: 0.3;
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+
+    .section {
+      padding: 10px;
+    margin-bottom: 20px;
+
+}
+
+p {
+  font-size: 18px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 5px;
+    font-weight: 100;
+}
+
+.socials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.social {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    background-color: #2e2e2e;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    gap: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.social:hover {
+    background-color: #4b4b4b;
+    border-color: #bbb;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+}
+
+.project {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    background-color: #525252;
+    padding: 10px;
+    width: 200px;
+    font-size: 18px;
+    cursor: pointer;
+    gap: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+
+.time {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.clock {
+    flex-shrink: 0;
+}
+
+.time-info {
+    text-align: left;
+}
+
+.time-info p {
+    margin: 0;
+    font-size: 12px;
+    color: #ffffff;
+}
+
+.time-info h1 {
+    margin: 5px 0;
+    font-size: 24px;
+    color: #ffffff;
+}
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <div class="title">81056</div>
+    <div class="rightcontainer">
+      <div class="time">
+        <span class="back-icon"></span> Homepage
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-container">
+    <div class="card"><h2>Welcome to my page</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut laoreet ipsum. Nam risus orci, commodo quis diam vitae, eleifend lacinia mauris. Nam id commodo felis. Proin ut mi eu tellus scelerisque interdum cursus eget arcu. Suspendisse sit amet eleifend neque. Nunc faucibus augue at massa tincidunt, vel maximus leo scelerisque. Aenean sagittis lacus in augue tempus eleifend non in enim. Ut condimentum faucibus enim, sit amet efficitur nunc imperdiet sit amet. </p></div>
+    <div class="card">
+      <h2>Socials</h2>
+      <div class="section">    
+          <div class="socials">
+              <a class="social">
+                  <span class="icon">🔵</span> SOCIAL
+              </a>
+              <a class="social">
+                  <span class="icon">🔵</span> SOCIAL
+              </a>
+              <a class="social">
+                  <span class="icon">🔵</span> SOCIAL
+              </a>
+              <a class="social">
+                  <span class="icon">🔵</span> SOCIAL
+              </a>
+              <a class="social">
+                  <span class="icon">🔵</span> SOCIAL
+              </a>
+              <a class="social">
+                  <span class="icon">🔵</span> SOCIAL
+              </a>
+          </div>
+      </div>
+      <h2>Time</h2>
+      <div class="section">
+       
+          <div class="time">
+              <div class="clock">
+                  <svg width="80" height="80" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="4"/>
+                      <line x1="50" y1="50" x2="50" y2="20" stroke="white" stroke-width="3" />
+                      <line x1="50" y1="50" x2="70" y2="50" stroke="white" stroke-width="3" />
+                  </svg>
+              </div>
+              <div class="time-info">
+                  <p>IT CURRENTLY IS</p>
+                  <h1>11:07</h1>
+                  <p>My Time (UTC+1)</p>
+                  <p>11/01/24</p>
+              </div>
+          </div>
+      </div>
+  </div>
+    <div class="card mediacard">
+      <h2>hm</h2>
+      <section><p>idk what</p><p>idk what</p></section>
+      <h2>Gallery</h2>
+      <section><img src="Penguins.jpg" width="296px"></section>
+    </div>
+    <div class="card projectcard">          
+      <h2>Projects</h2>
+    <div class="projects">
+      <a class="project">
+          <span class="icon">🔵</span> PROJECT
+      </a>
+      <a class="project">
+          <span class="icon">🔵</span> PROJECT
+      </a>
+      <a class="project">
+          <span class="icon">🔵</span> PROJECT
+      </a>
+      <a class="project">
+          <span class="icon">🔵</span> PROJECT
+      </a>
+      <a class="project">
+          <span class="icon">🔵</span> PROJECT
+      </a>
+
+  </div></div>
+    <div class="card">Card 5</div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`; 
+    });
+  </script>
+</body>
+</html>

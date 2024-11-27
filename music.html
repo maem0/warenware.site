@@ -1,0 +1,143 @@
+<head>
+    <style>
+       body {
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       color: white;
+       margin: 0;
+       overflow: hidden;
+       }
+       .player {
+       display: flex;
+       align-items: center;
+       border: 1px solid black;
+       width: 340px;
+       background-color: #000000;  
+       }
+       .album {
+       width: 130px;
+       height: 130px;
+       border: 1px solid black;
+       margin-right: 20px;
+       background-color: #f0f0f0;
+       }
+       .info {
+       flex: 1;
+       }
+       .controls {
+       display: flex;
+       align-items: center;
+       gap: 30px;
+       }
+       #title {
+       font-size: 25px;
+       font-weight: 100    ;
+       }
+       .album img {
+       width: auto;
+       height: auto;
+       max-width: 100%;
+       max-height: 100%;
+       display: block;
+       }
+       #artist {
+       font-size: 17px;
+       font-weight: 100;
+       margin-bottom: 10px;
+       }
+       .button {
+       cursor: pointer;
+       width: 40px;
+       height: 40px;
+       }
+       .progress-bar {
+       margin-top: 10px;
+       width: 100%;
+       }
+       input[type="range"] {
+       -webkit-appearance: none;
+       appearance: none;
+       background: transparent;
+       cursor: pointer;
+       }
+       input[type="range"]:focus {
+       outline: none;
+       }
+       input[type="range"]::-webkit-slider-runnable-track {
+       background-color: #ffffff;
+       border-radius: 0rem;
+       height: 0.2rem;
+       }
+       input[type="range"]::-webkit-slider-thumb {
+       -webkit-appearance: none;
+       appearance: none;
+       background-color: #ffffff;
+       border-radius: 11.5rem;
+       height: 0.7rem;
+       width: 0.7rem;
+       }
+       input[type="range"]:focus::-webkit-slider-thumb {
+       outline: 3px solid #ffffff;
+       outline-offset: 0.125rem;
+       }
+       input[type="range"]::-moz-range-track {
+       background-color: #ffffff;
+       border-radius: 0rem;
+       height: 0.2rem;
+       }
+       input[type="range"]::-moz-range-thumb {
+       background-color: #ffffff;
+       border: none; 
+       border-radius: 11.5rem;
+       height: 0.7rem;
+       width: 0.7rem;
+       }
+       input[type="range"]:focus::-moz-range-thumb{
+       outline: 3px solid #ffffff;
+       outline-offset: 0.125rem;
+       }
+    </style>
+ </head>
+ <body>
+    <div class="player">
+       <div class="album"><img src="img/alb.jpg" width="100%"></div>
+       <div class="info">
+          <div id="title">Hasty Boom Alert</div>
+          <div id="artist">µ-Ziq (1997)</div>
+          <div class="controls">
+             <img src="img/music/prev.svg" alt="Previous" class="button" onclick="skip(-10)">
+             <img src="img/music/play.svg" alt="Play" id="playPauseBtn" class="button" onclick="togglePlayPause()">
+             <img src="img/music/next.svg" alt="Next" class="button" onclick="skip(10)">
+          </div>
+          <input type="range" id="progressBar" class="progress-bar" value="0" min="0" step="1">
+       </div>
+    </div>
+    <audio id="audio" src="file/hasty.mp3"></audio>
+    <script>
+       const audio = document.getElementById("audio");
+       const playPauseBtn = document.getElementById("playPauseBtn");
+       const progressBar = document.getElementById("progressBar");
+       
+       function togglePlayPause() {
+           if (audio.paused) {
+               audio.play();
+               playPauseBtn.src = "img/music/pause.svg"; 
+           } else {
+               audio.pause();
+               playPauseBtn.src = "img/music/play.svg";
+           }
+       }
+       
+       function skip(seconds) {
+           audio.currentTime += seconds;
+       }
+       
+       audio.addEventListener("timeupdate", () => {
+           progressBar.value = (audio.currentTime / audio.duration) * 100;
+       });
+       
+       progressBar.addEventListener("input", () => {
+           audio.currentTime = (progressBar.value / 100) * audio.duration;
+       });
+    </script>
+ </body>
+ 
