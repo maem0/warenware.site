@@ -7,14 +7,11 @@
 
 }
 
-html,
+
 body {
 	height: 100%;
 	overflow: hidden;
-}
-
-body {
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI Light', sans-serif;
 	background-color: #000;
 	color: #333;
 	-webkit-user-drag: none;
@@ -25,9 +22,21 @@ body {
 	background-repeat: no-repeat;
 	background-size: auto 100%;
 	transition: background-position 0s ease-out;
-
-
 }
+
+
+@font-face {
+    font-family: 'Segoe UI Light';
+    src: 
+		 url('segoe/segoeuilt.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Segoe UI';
+    src: 
+		 url('segoe/segoeuithis.ttf') format('truetype');
+}
+
 
 @media screen and (max-width: 768px) {
 	body {
@@ -36,7 +45,8 @@ body {
 }
 
 .social,
-.project {
+.project,
+.location {
 	position: relative;
 	perspective: 1000px;
 	transform-style: preserve-3d;
@@ -45,13 +55,15 @@ body {
 }
 
 .social:active,
-.project:active {
+.project:active,
+.location:active  {
 	transform: scale(0.98) rotateX(3deg) rotateY(3deg);
 	transition: transform 0.1s ease;
 }
 
 .social::after,
-.project::after {
+.project::after,
+.location::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -66,7 +78,8 @@ body {
 }
 
 .social:active::after,
-.project:active::after {
+.project:active::after,
+.location:active::after {
 	opacity: 1;
 }
 
@@ -100,16 +113,15 @@ body {
 	flex: 0 0 auto;
 	width: 35vh;
 	height: auto;
-	margin: 0 60px;
+	margin: 0 45px;
 	color: #ffffff;
 	display: block;
 	text-align: left;
 	font-size: 1.5rem;
 	font-weight: 100;
-	opacity: 0;
-	transform-origin: center;
-	transform: translateX(100px);
-	animation: card-appear 0.4s linear forwards;
+
+	animation: card-appear 0.5s cubic-bezier(1, 1, 1, 1)
+	;
 }
 
 .scroll-container .card:nth-child(1) {
@@ -149,15 +161,18 @@ body {
 	width: 36vh;
 }
 
+.locations {
+	width: 20vh;
+}
 @keyframes card-appear {
 	0% {
 		opacity: 0;
-		transform: translateX(100px) scale(0.7);
+		transform: translateX(120px) scale(0.5);
 	}
 
-	40% {
+	50% {
 		opacity: 0.5;
-		transform: translateX(50px) scale(1);
+		transform: translateX(60px) scale(1);
 	}
 
 	100% {
@@ -165,6 +180,10 @@ body {
 		transform: translateX(0) scale(1);
 	}
 }
+
+
+
+
 
 .section {
 
@@ -179,7 +198,7 @@ p {
 h2 {
 	font-size: 3vh;
 	margin-bottom: 12px;
-	color: #ffffffd0;
+	color: #ffffff80;
 	border-bottom: 1px solid #ffffff;
 	padding-bottom: 5px;
 	font-weight: 100;
@@ -228,6 +247,8 @@ h1 {
 	gap: 12px;
 }
 
+
+
 .project {
 	display: flex;
 	align-items: left;
@@ -243,6 +264,7 @@ h1 {
 	background-size: cover;
 	background-position: center;
 }
+
 
 .project-title {
 	font-size: 2.5vh;
@@ -361,4 +383,41 @@ h1 {
 
 .music {
 	position: relative;
+}
+
+.location:hover {
+	outline: 3px solid #ffffff3a;
+}
+
+.locationsgrid {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	gap: 12px;
+}
+
+.location {
+	display: flex;
+	align-items: left;
+	flex-direction: column;
+	justify-content: left;
+	background: rgb(18,57,113);
+	background: linear-gradient(90deg, rgba(18,57,113,1) 0%, rgba(4,26,85,1) 100%); 	padding: 10px;
+	width: 20vh;
+	border: 1px solid #041a55;
+	font-size: 2rem;
+	cursor: pointer;
+	transition: background-color 0.1s, border-color 0.1s;
+	background-size: cover;
+	background-position: center;
+}
+
+
+.location-title {
+	font-size: 3.6vh;
+	color: white;
+}
+
+.location-subtitle {
+	font-size: 1.7vh;
+	color: white;
 }
