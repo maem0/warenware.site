@@ -471,3 +471,20 @@ h1 {
     pointer-events: none;
     z-index: 9999;
 }
+
+.fade-out {
+	animation: fadeScale 0.3s forwards;
+	overflow: hidden !important;
+}
+
+@keyframes fadeScale {
+    0% {
+        opacity: 1;
+		transform: scale(1);	
+    }
+    100% {
+        opacity: 0;
+		transform: scale(0.9);
+    }
+}
+
