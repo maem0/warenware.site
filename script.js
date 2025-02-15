@@ -102,43 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-   document.querySelectorAll("a.scale-link").forEach(link => {
-       link.addEventListener("click", function(event) {
-           event.preventDefault(); 
-           let href = this.href; 
-
-           const viewportWidth = window.innerWidth;
-           const viewportHeight = window.innerHeight;
-
-           let clone = this.cloneNode(true);
-           document.body.appendChild(clone);
-           
-           setTimeout(() => {
-            this.style.visibility = "hidden";
-        }, 50); 
-           let rect = this.getBoundingClientRect();
-           clone.style.position = "fixed";
-           clone.style.top = `${rect.top}px`;
-           clone.style.left = `${rect.left}px`;
-           clone.style.width = `${rect.width}px`;
-           clone.style.height = `${rect.height}px`;
-           clone.style.zIndex = "9999";
-           clone.style.overflow = "hidden";
-           clone.style.display = "flex";
-           clone.style.alignItems = "center";
-           clone.style.justifyContent = "center";
-
-           clone.innerHTML = "";
-
-           clone.classList.add("metro-zoom");
-
-           setTimeout(() => {
-               window.location.href = href;
-           }, 2000); 
-       });
-   });
-});
 
 
 
@@ -155,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    document.querySelectorAll(".location, .back-btn").forEach(button => {
+    document.querySelectorAll(".location, .back-btn ").forEach(button => { // .social, .project (?)
         button.addEventListener("click", handleFadeOut);
     });
 });
