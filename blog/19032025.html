@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Home</title>
+   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+   <link href="../style.css" rel="stylesheet" />
+</head>
+
+<body>
+   <div class="scroll-container">
+      <div class="card backcard">
+         <a href="index.html" class="back-btn"></a>
+      </div>
+      <div class="card blogview">
+         <div class="blogspacer"></div>
+         <h1>
+            Blog Title
+         </h1>
+         <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porta, enim quis varius suscipit, velit
+            risus posuere nunc, quis pharetra ante massa eu erat. Nunc non ante a diam tempus vulputate. Curabitur eget
+            odio justo. Morbi posuere gravida interdum. Class aptent taciti sociosqu ad litora torquent per conubia
+            nostra, per inceptos himenaeos. Sed varius mi at erat convallis ultrices. Sed quis nisi egestas, aliquet
+            velit eget, venenatis quam. Integer blandit at elit ac egestas. Class aptent taciti sociosqu ad litora
+            torquent per conubia nostra, per inceptos himenaeos. Etiam quis bibendum purus.
+
+            Nulla faucibus, dolor ac venenatis feugiat, velit enim pretium eros, vel aliquet lectus dui id mauris. Fusce
+            sit amet diam lorem. Donec convallis mauris a velit euismod porttitor. Duis posuere mi non mauris imperdiet
+            feugiat. Proin sed blandit ante. Fusce et leo et sem luctus efficitur eleifend non urna. Ut mattis purus
+            eget ultricies dapibus. Curabitur a gravida nunc. Pellentesque at lorem nec nibh vulputate lacinia. Ut in
+            tincidunt mi. Proin sit amet dui at nibh dignissim egestas. In vel est eget elit finibus interdum et vel
+            arcu. Vestibulum vel diam vel est vulputate hendrerit ut at erat.
+
+            Mauris quis mi auctor, scelerisque metus quis, tempus nisi. Nunc molestie, elit eu pellentesque congue,
+            justo erat dignissim leo, ornare ultricies enim ante eu mauris. Aenean ultrices metus ut porttitor
+            fringilla. Aenean in leo at sapien tincidunt semper. Ut feugiat arcu eget urna volutpat egestas. Nunc a
+            mollis tellus. Morbi vel egestas ante, eu tristique eros. Vivamus sed pharetra lacus, in tincidunt ante.
+            Proin bibendum quam nisi, in bibendum arcu ultricies nec. Cras at bibendum justo.
+
+            Proin pretium, nunc et faucibus vestibulum, dui ligula ornare risus, aliquam pretium lectus lorem vitae
+            massa. Integer ornare blandit est ut cursus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas. Nam vel quam justo. Integer viverra, enim vitae auctor vulputate, nulla
+            est blandit nibh, nec laoreet nisi orci quis ipsum. Quisque in purus accumsan, imperdiet massa at, consequat
+            nunc. Curabitur euismod feugiat eleifend. Integer faucibus ultricies tempus.
+
+            Nam quis sem tortor. Ut malesuada ornare scelerisque. Morbi mollis gravida ligula, in elementum purus
+            malesuada at. Curabitur ut iaculis est. Proin finibus, ligula id pellentesque faucibus, enim sem dictum leo,
+            in porttitor mi nisl sollicitudin ante. Aenean interdum odio vitae urna convallis imperdiet. Praesent
+            sollicitudin sem sed ipsum bibendum facilisis. Fusce ornare consectetur elit, ut sodales elit pulvinar et.
+            Nam pretium tempus nibh, eu bibendum nunc mattis eu. Vestibulum dignissim mi eu sollicitudin interdum.
+            Phasellus ac magna vitae mauris condimentum ornare sit amet quis nulla.
+
+            Suspendisse tristique ullamcorper nibh, sed varius sapien tempor sed. Cras sed lacinia dui. Nunc nunc
+            libero, blandit non interdum eu, rutrum quis ante. Morbi mattis accumsan neque, molestie consectetur orci
+            pulvinar vitae. Quisque consectetur ut nunc a tincidunt. Mauris commodo ante suscipit, mollis tortor ac,
+            ullamcorper ante. Donec vehicula sem tellus, et ullamcorper urna auctor commodo. Integer nisi nibh, lacinia
+            et urna a, tempus fringilla turpis. Aliquam nec ex massa. Fusce at massa non dui feugiat euismod sed id sem.
+            Integer elementum faucibus augue, sit amet mattis nibh vestibulum et.
+
+         </div>
+      </div>
+      <div>
+      </div>
+      <script src="../script.js">
+      </script>
+      <script>
+         document.addEventListener("DOMContentLoaded", function () {
+            const scrollContainer = document.querySelector('.scroll-container');
+
+            if (scrollContainer) {
+               const newScrollContainer = scrollContainer.cloneNode(true);
+
+               scrollContainer.parentNode.replaceChild(newScrollContainer, scrollContainer);
+
+               newScrollContainer.addEventListener('scroll', function () {
+                  const scrollPosition = newScrollContainer.scrollLeft;
+                  updateBackgroundPosition(scrollPosition);
+               });
+            }
+         });
+      </script>
+</body>
+
+</html>
