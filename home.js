@@ -2,36 +2,48 @@ function updateTime() {
     const timeElement = document.getElementById('time');
     const now = new Date();
 
-    const gmtPlusTwo = new Date(now.getTime() + (2 * 60 * 60 * 1000));
+    const options = {
+        timeZone: 'Europe/Paris',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+    };
 
-    const hours = String(gmtPlusTwo.getUTCHours()).padStart(2, '0');
-    const minutes = String(gmtPlusTwo.getUTCMinutes()).padStart(2, '0');
+    const timeString = now.toLocaleTimeString('fr-FR', options);
 
-    const timeString = `${hours}:${minutes}`;
+    const dateOptions = {
+        timeZone: 'Europe/Paris',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    };
 
-    const day = gmtPlusTwo.getDate();
-    const month = gmtPlusTwo.toLocaleString('default', {
-        month: 'long'
-    });
-    const year = gmtPlusTwo.getFullYear();
-    const dateString = `${day} ${month} ${year}`;
+    const dateString = now.toLocaleDateString('fr-FR', dateOptions);
 
     document.querySelector('.time-info p:last-child').textContent = dateString;
     timeElement.textContent = timeString;
 }
+
 
 setInterval(updateTime, 1000);
 updateTime();
 
 function updateClock() {
     const now = new Date();
+    const formatter = new Intl.DateTimeFormat('fr-FR', {
+        timeZone: 'Europe/Paris',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false
+    });
 
-    const utcOffsetInHours = 1;
-    const utcTime = new Date(now.getTime() + utcOffsetInHours * 60 * 60 * 1000);
+    const parts = formatter.formatToParts(now);
+    const getPart = type => parts.find(part => part.type === type)?.value;
 
-    const seconds = utcTime.getUTCSeconds();
-    const minutes = utcTime.getUTCMinutes();
-    const hours = utcTime.getUTCHours();
+    const hours = parseInt(getPart('hour'));
+    const minutes = parseInt(getPart('minute'));
+    const seconds = parseInt(getPart('second'));
 
     const secondAngle = seconds * 6;
     const minuteAngle = (minutes + seconds / 60) * 6;
@@ -45,6 +57,7 @@ function updateClock() {
     minuteHand.setAttribute('transform', `rotate(${minuteAngle} 50 50)`);
     secondHand.setAttribute('transform', `rotate(${secondAngle} 50 50)`);
 }
+
 
 setInterval(updateClock, 1000);
 updateClock();
