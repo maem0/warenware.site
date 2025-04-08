@@ -62,7 +62,7 @@ function smoothScroll() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.social, .project, .location, .drive');
+    const elements = document.querySelectorAll('.social, .project, .location, .drive, .friend');
 
     elements.forEach(el => {
 
@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.style.transition = 'transform 0.2s ease';
         });
     });
+    
 });
 
 
@@ -120,3 +121,16 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", handleFadeOut);
     });
 });
+
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        const fadeElements = document.querySelectorAll(".fade-out");
+        fadeElements.forEach(el => el.classList.remove("fade-out"));
+        
+        document.body.style.display = 'none';
+        setTimeout(function() {
+            document.body.style.display = '';
+        }, 10);
+    }
+});
+

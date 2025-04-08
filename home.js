@@ -61,3 +61,27 @@ function updateClock() {
 
 setInterval(updateClock, 1000);
 updateClock();
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const frontFaces = document.querySelectorAll('.friend-face.front');
+    
+    frontFaces.forEach((front, index) => {
+        let isHidden = false;
+        const back = front.nextElementSibling; 
+        
+        const backColor = back.dataset.color || "#dd0037"; 
+        back.style.backgroundColor = backColor;
+        
+        const randomInterval = Math.floor(Math.random() * 3000) + 6000;
+        
+        const initialDelay = Math.floor(Math.random() * 2000);
+        
+        setTimeout(() => {
+            setInterval(() => {
+                front.style.transform = isHidden ? 'translateY(0%)' : 'translateY(-100%)';
+                isHidden = !isHidden;
+            }, randomInterval);
+        }, initialDelay);
+    });
+});
